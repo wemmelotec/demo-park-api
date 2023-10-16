@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -18,13 +17,17 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "username", nullable = false, unique = true, length = 100)
     private String username; //Req 2.1
+
     @Column(name = "password", nullable = false, length = 200)
     private String password; //Req 2.2
+
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false, length = 25)
     private Role role; //Req 2.3
+
     @Column(name = "data_criacao")
     private LocalDateTime dataCriacao; //Req 1.3.1
     @Column(name = "data_modificacao")
