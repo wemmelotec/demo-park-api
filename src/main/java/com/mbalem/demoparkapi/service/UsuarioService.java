@@ -22,4 +22,12 @@ public class UsuarioService {
                 ()-> new RuntimeException("Usuário não encontrado!")
         );
     }
+    @Transactional
+    public Usuario editarSenha(Long id, String password) {
+        Usuario user = buscarPorId(id);
+        user.setPassword(password);
+        //não precisei utilizar o save pois o prórpio Hibernet faz essa atualização
+        //quando ele buscar o objeto ele mantém em memória e se fecha ele após o meu return
+        return user;
+    }
 }
